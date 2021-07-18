@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  vbmc4vsphere:
+    container_name: vbmc4vsphere
+    image: ghcr.io/kurokobo/vbmc4vsphere:0.0.7
+    networks:
+      - vbmc-network
+    ports:
+      - "6231:6231/udp"
+      - "6232:6232/udp"
+      - "6233:6233/udp"
+      - "6239:6239/udp"
+    volumes:
+      - vbmc-volume:/root/.vbmc
+
+volumes:
+  vbmc-volume:
+
+networks:
+  vbmc-network:
+    driver: "bridge"
