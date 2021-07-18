@@ -75,8 +75,107 @@ ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power 
  ```
 
 Once, you've verified that this works, then you are on your way to follow the redhat documentation and proceed with the install from undercloud VM.
+ ```plain
+Please follow the redhat guide to make your /home/stack/instackenv.json file.
+URL for guide is: https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/13/html/director_installation_and_usage/appe-power_management_drivers#sect-VirtualBMC
 
+One Note, I wanted to point out.  for the MAC please use the fake mac as listed from output of the vbmc show command.  As an example:
 
+soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbmc show Openstack-Controller1
++-------------------+---------------------------------+
+| Property          | Value                           |
++-------------------+---------------------------------+
+| active            | True                            |
+| address           | ::                              |
+| fakemac           | 02:00:00:9e:1e:34               |
+| password          | ***                             |
+| port              | 6231                            |
+| status            | running                         |
+| username          | admin                           |
+| viserver          | 10.1.100.60                     |
+| viserver_password | ***                             |
+| viserver_username | administrator@anywhere.bootcamp |
+| vm_name           | Openstack-Controller1           |
++-------------------+---------------------------------+
+
+soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbmc show OpenstackCompute1     
++-------------------+---------------------------------+
+| Property          | Value                           |
++-------------------+---------------------------------+
+| active            | True                            |
+| address           | ::                              |
+| fakemac           | 02:00:00:97:b7:c3               |
+| password          | ***                             |
+| port              | 6232                            |
+| status            | running                         |
+| username          | admin                           |
+| viserver          | 10.1.100.60                     |
+| viserver_password | ***                             |
+| viserver_username | administrator@anywhere.bootcamp |
+| vm_name           | OpenstackCompute1               |
++-------------------+---------------------------------+
+
+soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbmc show openstackCompute2
++-------------------+---------------------------------+
+| Property          | Value                           |
++-------------------+---------------------------------+
+| active            | True                            |
+| address           | ::                              |
+| fakemac           | 02:00:00:30:a3:c8               |
+| password          | ***                             |
+| port              | 6233                            |
+| status            | running                         |
+| username          | admin                           |
+| viserver          | 10.1.100.60                     |
+| viserver_password | ***                             |
+| viserver_username | administrator@anywhere.bootcamp |
+| vm_name           | openstackCompute2               |
++-------------------+---------------------------------+
+
+The instackenv.json file should now look like this:
+
+(undercloud) [stack@undercloud ~]$ cat instackenv.json
+{
+  "nodes": [
+    {
+      "pm_type": "ipmi",
+      "mac": [
+        "02:00:00:9e:1e:34"
+      ],
+      "pm_user": "admin",
+      "pm_password": "password",
+      "pm_addr": "192.168.24.20",
+      "pm_port": "6231",
+      "name": "Openstack-Controller1"
+    },
+    {
+      "pm_type": "ipmi",
+      "mac": [
+        "02:00:00:97:b7:c3"
+      ],
+      "pm_user": "admin",
+      "pm_password": "password",
+      "pm_addr": "192.168.24.20",
+      "pm_port": "6232",
+      "name": "OpenstackCompute1"
+    },
+    {
+      "pm_type": "ipmi",
+      "mac": [
+        "02:00:00:30:a3:c8"
+      ],
+      "pm_user": "admin",
+      "pm_password": "password",
+      "pm_addr": "192.168.24.20",
+      "pm_port": "6233",
+      "name": "openstackCompute2"
+    }
+  ]
+}
+
+after making the /home/stack/instackenv.json file, follow from https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/13/html/director_installation_and_usage/chap-configuring_basic_overcloud_requirements_with_the_cli_tools#sect-Registering_Nodes_for_the_Overcloud
+
+ ```
 
 # In case you don't have a vm with docker/docker-compose, follow these steps first to install:
 --------------------------------------------------------------------------------------------
