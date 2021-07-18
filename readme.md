@@ -67,9 +67,11 @@ To see more details on them you would do:
 Now that you have installed vBMC container and enabled the mappings per VM, you need to test out that ipmi can power on/off the VMs.
 First thing you need to do is install the ipmitool in the base ubuntu VM where you are running the container.  
 
+ ```plain
 sudo apt-get update -y
 sudo apt-get install -y ipmitool
-
+ ```plain
+ 
 Now execute the ipmitool commands to check power status, turn on/off VM
 
 In my case, the base ubuntu box has an IP of 192.168.24.20.  Also, please note that the default password for ipmitool you need to use is admin/password as shown in the example below.
