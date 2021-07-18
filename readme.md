@@ -132,7 +132,7 @@ soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbm
 | vm_name           | openstackCompute2               |
 +-------------------+---------------------------------+
 
-The instackenv.json file should now look like this:
+The instackenv.json file should now look like this (note 192.168.24.20 is the ubuntu box where the vBMC container is running:
 
 (undercloud) [stack@undercloud ~]$ cat instackenv.json
 {
