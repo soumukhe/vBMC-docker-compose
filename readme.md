@@ -17,12 +17,13 @@ VM with ubuntu and docker/docker-compose installed.  If you don't have that, ple
 3) vi the docker-compose file and modify / put in more entries for the port numbers based on the number of VMs you want to use ipmi for
 
    The 3 docker-compose port entries in this example are shown below:
-    '''plain
+   
+'''plain
     ports:
       - "6231:6231/udp"
       - "6232:6232/udp"
       - "6233:6233/udp"
-   ''' 
+''' 
 3) docker-compose up --build -d ( or do docker-compose build   followed by docker-compose up -d)
 4) make sure to do a docker ps to verify that container is up and running
 
