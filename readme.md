@@ -17,20 +17,19 @@ VM with ubuntu and docker/docker-compose installed.  If you don't have that, ple
 3) vi the docker-compose file and modify / put in more entries for the port numbers based on the number of VMs you want to use ipmi for
 
    The 3 docker-compose port entries in this example are shown below:
-   
-'''plain
+ ```plain
     ports:
       - "6231:6231/udp"
       - "6232:6232/udp"
       - "6233:6233/udp"
-''' 
+```
 3) docker-compose up --build -d ( or do docker-compose build   followed by docker-compose up -d)
 4) make sure to do a docker ps to verify that container is up and running
 
 # Steps to use:
 
 1) Please use the vCenter administrator user and password.  I have not investigated what exact roles are needed, so at this time I'm not sure what exact privilige is needed for a non-admin vCenter user to be able to use ipmi.
-'''plain
+ ```plain
    In this example, I have 3 VMs that I spun up from vCenter, Openstack-Controller1, OpenstackCompute1 and openstackCompute2.  My Vcenter IP is 10.1.100.60 and my vCenter credentials is administrator@vsphere.local / myvCenterPass.  Also, note, that in this case, since we are going to do nested virtualization, the VMs need to have "expose hardware assisted virtualization to guest OS" and also "enable virtualized cpu performance conters enabled" on CPU.  Also, on VM Options, please make sure to go to Boot Options and turn on EFI instead of BIOS.
    
 From the base ubuntu box, where you are running the container, execute these commands:
@@ -42,10 +41,10 @@ docker-compose exec vbmc4vsphere vbmc add openstackCompute2 --port 6233 --viserv
 To delete a mapping, let's say Openstack-Controller1, you would do: 
  docker-compose exec vbmc4vsphere vbmc delete Openstack-Controller1
 
-'''
+```
 
 2)  Now start the virutal BMCs:
-'''plain
+ ```plain
 docker-compose exec vbmc4vsphere vbmc start Openstack-Controller1
 docker-compose exec vbmc4vsphere vbmc start OpenstackCompute1
 docker-compose exec vbmc4vsphere vbmc start openstackCompute2
@@ -53,27 +52,27 @@ docker-compose exec vbmc4vsphere vbmc start openstackCompute2
 To stop an instance, let's say Openstack-Controller1, you would do:
  docker-compose exec vbmc4vsphere vbmc stop Openstack-Controller1
 
-'''
+```
 
 3)  Check to make sure the virutal BMCs are up:
-'''plain
+ ```plain
 docker-compose exec vbmc4vsphere vbmc list
 
 To see more details on them you would do:
  docker-compose exec vbmc4vsphere vbmc show Openstack-Controller1
  docker-compose exec vbmc4vsphere vbmc show Openstack-Compute1
  docker-compose exec vbmc4vsphere vbmc show openstack-Compute2
-'''
+ ```
 # Steps to Test:
 Now that you have installed vBMC container and enabled the mappings per VM, you need to test out that ipmi can power on/off the VMs.
 First thing you need to do is install the ipmitool in the base ubuntu VM where you are running the container.  In my case, the base ubuntu box has an IP of 192.168.24.20.
 
-'''plain
+ ```plain
 For the first VM, that has been configured to be managed by vBMC on port 6231, you would do the below:
 ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power status
 ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power on
 ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power off
-'''
+ ```
 
 Once, you've verified that this works, then you are on your way to follow the redhat documentation and proceed with the install from undercloud VM.
 
