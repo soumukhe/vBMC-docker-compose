@@ -70,7 +70,7 @@ First thing you need to do is install the ipmitool in the base ubuntu VM where y
  ```plain
 sudo apt-get update -y
 sudo apt-get install -y ipmitool
- ```plain
+ ```
  
 Now execute the ipmitool commands to check power status, turn on/off VM
 
