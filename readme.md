@@ -64,7 +64,7 @@ To see more details on them you would do:
  docker-compose exec vbmc4vsphere vbmc show openstack-Compute2
  ```
 # Steps to Test:
-Now that you have installed vBMC container and enabled the mappings per VM, you need to test out that ipmi can power on/off the VMs.
+Now that you have installed vBMC container and enabled the mappings per VM, you need to test out that ipmi can power on/off the VMs targetting the port numbers you've defined in vBMC.
 First thing you need to do is install the ipmitool in the base ubuntu VM where you are running the container.  
 
  ```plain
