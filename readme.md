@@ -82,7 +82,7 @@ Once, you've verified that this works, then you are on your way to follow the re
 --------------------------------------------------------------------------------------------
  ```plain
 1) Download Ubuntu 20.04 --  https://ubuntu.com/download/desktop
-2) Install Ubuntu VM minimum versiojn
+2) Install Ubuntu VM minimum version
 3) update/upgrade ubuntu and install basic utils: 
     sudo -i
     apt update && apt upgrade -y
