@@ -80,7 +80,7 @@ Once, you've verified that this works, then you are on your way to follow the re
 
 # In case you don't have a vm with docker/docker-compose, follow these steps first to install:
 --------------------------------------------------------------------------------------------
-
+ ```plain
 1) Download Ubuntu 20.04 --  https://ubuntu.com/download/desktop
 2) Install Ubuntu VM minimum versiojn
 3) update/upgrade ubuntu and install basic utils: 
@@ -105,7 +105,7 @@ Once, you've verified that this works, then you are on your way to follow the re
     docker --version
     sudo apt install docker-compose -y
 
-
+ ```
 
 
 
