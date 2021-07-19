@@ -89,7 +89,7 @@ Once, you've verified that this works, then you are on your way to follow the re
 Please follow the redhat guide to make your /home/stack/instackenv.json file.
 URL for guide is: https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/13/html/director_installation_and_usage/appe-power_management_drivers#sect-VirtualBMC
 
-One Note, I wanted to point out.  for the MAC please use the fake mac as listed from output of the vbmc show command.  As an example:
+One Note, I wanted to point out.  for the MAC please do not use the fake mac as listed from output of the vbmc show command.  Please use the real mac of the VMs.  As an example:
 
 soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbmc show Openstack-Controller1
 +-------------------+---------------------------------+
@@ -143,6 +143,7 @@ soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbm
 +-------------------+---------------------------------+
 
 The instackenv.json file should now look like this (note 192.168.24.20 is the ubuntu box where the vBMC container is running:
+Note:  The MAC addresses of the nodes are the real MACs of the VMs, not the fake mac from the output of vbmc show command.
 
 (undercloud) [stack@undercloud ~]$ cat instackenv.json
 {
@@ -150,7 +151,7 @@ The instackenv.json file should now look like this (note 192.168.24.20 is the ub
     {
       "pm_type": "ipmi",
       "mac": [
-        "02:00:00:9e:1e:34"
+        "00:50:56:a9:89:6e"
       ],
       "pm_user": "admin",
       "pm_password": "password",
@@ -161,7 +162,7 @@ The instackenv.json file should now look like this (note 192.168.24.20 is the ub
     {
       "pm_type": "ipmi",
       "mac": [
-        "02:00:00:97:b7:c3"
+        "00:50:56:a9:e9:3a"
       ],
       "pm_user": "admin",
       "pm_password": "password",
@@ -172,7 +173,7 @@ The instackenv.json file should now look like this (note 192.168.24.20 is the ub
     {
       "pm_type": "ipmi",
       "mac": [
-        "02:00:00:30:a3:c8"
+        "00:50:56:a9:fb:5d"
       ],
       "pm_user": "admin",
       "pm_password": "password",
