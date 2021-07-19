@@ -1,12 +1,10 @@
 # Purpose:
 Installing docker container for virtualbmc-for-vshpere.  This can be used by used by the ipmitool to power on/off VMs.  
 
-# References:
-https://github.com/kurokobo/virtualbmc-for-vsphere
-
-
 One use case for this is for openstack director when installing openstack on a nested esxi environment.  Openstack Director requres the use of ipmi (ntelligent Platform Management Interface) as listed in  https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/13/html/director_installation_and_usage/appe-Power_Management_Drivers.  When installing Openstack on bare metal, most industrial servers like the cisco ucs has ipmi capabilities built into the server.  However, in a lab environment if you wanted to install openstack over VMs spun up on esxi (managed by vCenter), then you need a method to fake out the ipmi capability for the VMs.   
 
+# References:
+https://github.com/kurokobo/virtualbmc-for-vsphere
 
 # Requirements:  
 VM with ubuntu and docker/docker-compose installed.  If you don't have that, please look at the bottom of this README file
