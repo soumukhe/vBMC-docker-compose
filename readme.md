@@ -30,7 +30,7 @@ VM with ubuntu and docker/docker-compose installed.  If you don't have that, ple
 
 1) Please use the vCenter administrator user and password.  I have not investigated what exact roles are needed, so at this time I'm not sure what exact privilige is needed for a non-admin vCenter user to be able to use ipmi.
  ```plain
-   In this example, I have 3 VMs that I spun up from vCenter, Openstack-Controller1, OpenstackCompute1 and openstackCompute2.  My Vcenter IP is 10.1.100.60 and my vCenter credentials is administrator@anywhere.bootcamp / myvCenterPass.  
+In this example, I have 3 VMs that I spun up from vCenter, Openstack-Controller1, OpenstackCompute1 and openstackCompute2.  My Vcenter IP is 10.1.100.60 and my vCenter credentials is administrator@anywhere.bootcamp / myvCenterPass.  
 Also, note, that in this case, since we are going to do nested virtualization, the VMs need to have "expose hardware assisted virtualization to guest OS" and also "enable virtualized cpu performance conters enabled" on CPU.  
 Also, on VM Options, please make sure to go to Boot Options and turn on EFI instead of BIOS.
    
