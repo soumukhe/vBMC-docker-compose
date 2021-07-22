@@ -91,6 +91,15 @@ URL for guide is: https://access.redhat.com/documentation/en-us/red_hat_openstac
 
 One Note, I wanted to point out.  for the MAC please do not use the fake mac as listed from output of the vbmc show command.  Please use the real mac of the VMs.  As an example:
 
+soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbmc list
++-----------------------+---------+---------+------+
+| VM name               | Status  | Address | Port |
++-----------------------+---------+---------+------+
+| Openstack-Controller1 | running | ::      | 6231 |
+| OpenstackCompute1     | running | ::      | 6232 |
+| openstackCompute2     | running | ::      | 6233 |
++-----------------------+---------+---------+------+
+
 soumukhe@dhcp-server:~/vBMC-docker-compose$ docker-compose exec vbmc4vsphere vbmc show Openstack-Controller1
 +-------------------+---------------------------------+
 | Property          | Value                           |
