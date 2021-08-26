@@ -82,6 +82,14 @@ For the first VM, that has been configured to be managed by vBMC on port 6231, y
 ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power status
 ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power on
 ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power off
+
+*** Note: ***  
+The Actual commands sent by the Openstack Director during introspection and during overcloud installation are as follows: (you can verify them also)
+ipmitool -I lanplus -H 10.0.140.69 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power status 
+ipmitool -I lanplus -H 10.0.140.69 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power on
+ipmitool -I lanplus -H 10.0.140.69 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power off
+
+
  ```
 
 Once, you've verified that this works, then you are on your way to follow the redhat documentation and proceed with the install from undercloud VM.
