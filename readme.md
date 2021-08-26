@@ -90,7 +90,7 @@ ipmitool -I lanplus -H 192.168.24.20 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5
 ipmitool -I lanplus -H 192.168.24.20 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power off
 
 The IP address and ports are defined in the Openstack Director in file instackenv.json (shown a little below)
-When the "openstack overcloud install" command is issued on the director, ipmi will be used at the appropriate time to power on the nodes and pxe boot it with openstack software.
+When the "openstack overcloud install" command is issued on the director, ipmi will be used at the appropriate time to power on the nodes and pxe boot them with openstack software and configurations will be pushed to them.
  ```
 
 Once, you've verified that this works, then you are on your way to follow the redhat documentation and proceed with the install from undercloud VM.
