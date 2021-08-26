@@ -85,10 +85,11 @@ ipmitool -I lanplus -H 192.168.24.20 -p 6231 -U admin -P password chassis power 
 
 *** Note: ***  
 The Actual commands sent by the Openstack Director during introspection and during overcloud installation are as follows: (you can verify them also)
-ipmitool -I lanplus -H 10.0.140.69 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power status 
-ipmitool -I lanplus -H 10.0.140.69 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power on
-ipmitool -I lanplus -H 10.0.140.69 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power off
+ipmitool -I lanplus -H 192.168.24.20 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power status 
+ipmitool -I lanplus -H 192.168.24.20 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power on
+ipmitool -I lanplus -H 192.168.24.20 -L ADMINISTRATOR -p 6231 -U admin -R 3 -N 5 -P password chassis power off
 
+The IP address and ports are defined in the Openstack Director in file instackenv.json (shown a little below)
 
  ```
 
