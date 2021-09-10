@@ -23,7 +23,25 @@ VM with ubuntu and docker/docker-compose installed.  If you don't have that, ple
 ```
 3) docker-compose up --build -d ( or do docker-compose build   followed by docker-compose up -d)
 4) make sure to do a docker ps to verify that container is up and running
+```plain
+   * In case the container refuses to run with an error like so:
+            vbmc4vsphere    | 2021-09-10 04:50:49,568.568 1 ERROR VirtualBMC [-] server PID #1 still running
+            vbmc4vsphere exited with code 1
+            
+  the easist way to solve it is to remove docker all the way and reinstall:
+   Docker Remove (ubuntu) Instructions:
+     sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli docker-compose
+     sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce  docker-compose
+     sudo rm -rf /var/lib/docker /etc/docker
+     sudo rm /etc/apparmor.d/docker
+     sudo groupdel docker
+     sudo rm -rf /var/run/docker.sock
+   Docker Install Instructions:
+      See towards the end of this README
+    
+```
 
+  
 # Steps to use:
 
 1) Please use the vCenter administrator user and password.  I have not investigated what exact roles are needed, so at this time I'm not sure what exact privilige is needed for a non-admin vCenter user to be able to use ipmi.
