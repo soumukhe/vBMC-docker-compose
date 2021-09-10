@@ -37,7 +37,7 @@ VM with ubuntu and docker/docker-compose installed.  If you don't have that, ple
      sudo groupdel docker
      sudo rm -rf /var/run/docker.sock
    Docker Install Instructions:
-      See towards the end of this README
+      See towards the end of this README.  Start from Step 4 of install
     
 ```
 
