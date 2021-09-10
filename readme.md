@@ -11,8 +11,9 @@ VM with ubuntu and docker/docker-compose installed.  If you don't have that, ple
 
 # Steps to install:
 1) ssh to ubuntu box and clone this repo
-2) cd vBMC-docker-compose
-3) vi the docker-compose file and modify / put in more entries for the port numbers based on the number of VMs you want to use ipmi for
+   git clone https://github.com/soumukhe/vBMC-docker-compose.git
+3) cd vBMC-docker-compose
+4) vi the docker-compose file and modify / put in more entries for the port numbers based on the number of VMs you want to use ipmi for
 
    The 3 docker-compose port entries in this example are shown below:
  ```plain
