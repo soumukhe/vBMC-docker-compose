@@ -10,8 +10,7 @@ https://github.com/kurokobo/virtualbmc-for-vsphere
 VM with ubuntu and docker/docker-compose installed.  If you don't have that, please look at the bottom of this README file
 
 # Steps to install:
-1) ssh to ubuntu box and clone this repo
-   git clone https://github.com/soumukhe/vBMC-docker-compose.git
+1) ssh to ubuntu box and clone this repo:  git clone https://github.com/soumukhe/vBMC-docker-compose.git
 3) cd vBMC-docker-compose
 4) vi the docker-compose file and modify / put in more entries for the port numbers based on the number of VMs you want to use ipmi for
 
